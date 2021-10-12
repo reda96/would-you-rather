@@ -64,16 +64,17 @@ class Header extends Component {
                   verticalAlign="bottom"
                 />
               ) : null}
-              {"  "}
-              <Button
-                labelPosition="right"
-                basic
-                compact
-                size="mini"
-                onClick={this.handleLogout}
-              >
-                Log out
-              </Button>
+              {this.props.authedUser ? (
+                <Button
+                  labelPosition="right"
+                  basic
+                  compact
+                  size="mini"
+                  onClick={this.handleLogout}
+                >
+                  Log out
+                </Button>
+              ) : null}
             </Menu.Item>
           </Menu.Menu>
         </Menu>
