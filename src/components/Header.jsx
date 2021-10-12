@@ -7,7 +7,7 @@ import { logout, login } from "../store/actions/authedUser.action";
 
 // Main Class
 class Header extends Component {
-  state = { activeItem: "dashboard" };
+  state = { activeItem: "" };
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name });
   handleLogout = (e) => {
