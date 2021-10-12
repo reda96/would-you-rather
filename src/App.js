@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from "react";
 import LoadingBar from "react-redux-loading";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import PrivateRoute from "./components/PrivateRoute.jsx";
+import PrivateRoute from "./components/PrivateRoute";
 import { connect } from "react-redux";
 import "./App.css";
 import { setInitialData } from "./store/actions/user-question.action";
@@ -12,7 +12,8 @@ import Home from "./components/Home";
 import NewQuestion from "./components/NewQuestion";
 import LeaderBoard from "./components/LeaderBoard";
 import Qusetion from "./components/Question";
-// import Pagenotexist from "../mocks/Pagenotexist";
+import PageNotFound from "./components/PageNotFound";
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(setInitialData());
@@ -51,6 +52,12 @@ class App extends Component {
                 authedUser={this.props.authedUser}
               />
               <Route exact path="/login" name="Login" component={Login} />
+              <Route
+                exact
+                path="/404"
+                name="NotFoound"
+                component={PageNotFound}
+              />
 
               <Redirect to="/404" />
             </Switch>

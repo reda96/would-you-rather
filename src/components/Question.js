@@ -1,11 +1,13 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { connect } from "react-redux";
 import { setAnswerQuestion } from "../store/actions/questions.actions";
 import AnsweredQusetion from "./AnsweredQusetion";
 import UnansweredQusetion from "./UnansweredQuestion";
 import { Label } from "semantic-ui-react";
+import { Redirect } from "react-router";
 function Question(props) {
   const [value, setvalue] = useState("");
+
   const onChange = (e, { value }) => setvalue(value);
 
   const onSubmit = () => {
@@ -25,6 +27,7 @@ function Question(props) {
   let id = props.match.params["question_id"];
   const { questions, authedUser, users } = props;
   const question = questions.filter((q) => q.id === id)[0];
+  if (!question) return <Redirect to="/404" />;
   const user = users.filter((u) => u.id === authedUser)[0];
   const author = users.filter((u) => u.id === question.author)[0];
   const answer = user.answers[id];

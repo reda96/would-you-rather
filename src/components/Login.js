@@ -11,9 +11,7 @@ function Login(props) {
   useEffect(() => {
     if (props.authedUser) {
       if (props.location.path) {
-        if (props.location.path === "/questions/:question_id") {
-          props.history.push("/404");
-        } else props.history.push(props.location.path);
+        props.history.push(props.location.state.from.pathname);
       } else {
         props.history.push("/");
       }
