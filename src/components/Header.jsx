@@ -64,7 +64,7 @@ class Header extends Component {
                   verticalAlign="bottom"
                 />
               ) : null}
-              {this.props.authedUser ? (
+              {this.props.activeUser ? (
                 <Button
                   labelPosition="right"
                   basic
